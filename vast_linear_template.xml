@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VAST version="4.0">
+   <Ad>
+      <InLine>
+         <AdSystem>{{adSystem}}</AdSystem>
+         <AdTitle>{{adTitle}}</AdTitle>
+         <Impression>{{impression | safe}}</Impression>
+         <Creatives>
+            <Creative>
+               <UniversalAdId idRegistry="unknown" idValue="unknown">unknown</UniversalAdId>
+               <Linear>
+                  <TrackingEvents>
+                     {% if trackingStart %}<Tracking event="start">{{trackingStart | safe}}</Tracking>{% endif %}
+                     {% if trackingFirstQuartile %}<Tracking event="firstQuartile">{{trackingFirstQuartile | safe}}</Tracking>{% endif %}
+                     {% if trackingMidpoint %}<Tracking event="midpoint">{{trackingMidpoint | safe}}</Tracking>{% endif %}
+                     {% if trackingThirdQuartile %}<Tracking event="thirdQuartile">{{trackingThirdQuartile | safe}}</Tracking>{% endif %}
+                     {% if trackingComplete %}<Tracking event="complete">{{trackingComplete | safe}}</Tracking>{% endif %}
+                  </TrackingEvents>
+                  <MediaFiles>
+                     <MediaFile delivery="progressive" type="video/mp4" width="{{mediaMp4Width}}" height="{{mediaMp4Height}}">{{mediaMp4Url | safe}}</MediaFile>
+                  </MediaFiles>
+                  <VideoClicks>
+                     <ClickThrough>{{clickThrough | safe}}</ClickThrough>
+                  </VideoClicks>
+               </Linear>
+            </Creative>
+         </Creatives>
+      </InLine>
+   </Ad>
+</VAST>
